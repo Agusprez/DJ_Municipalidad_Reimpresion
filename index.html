@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        background-color: #e6f2ff; /* Color de fondo azul claro */
+    }
+</style>
+    <title>DJ Municipalidad - San Pedro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DJ Municipalidad - San Pedro</h1>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="mes">Mes:</label>
+                <input type="text" class="form-control" id="mes" name="mes" required>
+            </div>
+
+            <div class="form-group">
+                <label for="anio">Año:</label>
+                <input type="text" class="form-control" id="anio" name="anio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ncuenta">Número de cuenta:</label>
+                <input type="text" class="form-control" id="ncuenta" name="ncuenta" required>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="generarEnlace()">REIMPRIMIR DJ</button>
+        </form>
+    </div>
+
+    <script>
+        function generarEnlace() {
+            var mes = document.getElementById("mes").value;
+            var anio = document.getElementById("anio").value;
+            var ncuenta = document.getElementById("ncuenta").value;
+
+            var url = "https://serverweb.sanpedro.gob.ar/pdf/jurada.php";
+            url += "?mes=" + encodeURIComponent(mes);
+            url += "&anio=" + encodeURIComponent(anio);
+            url += "&ncuenta=" + encodeURIComponent(ncuenta);
+            url += "&du_inx=0";
+
+            window.open(url, "_blank");
+
+            // Limpiar el formulario después de generar el enlace
+            document.getElementById("mes").value = "";
+            document.getElementById("anio").value = "";
+            document.getElementById("ncuenta").value = "";
+        }
+    </script>
+</body>
+</html>
